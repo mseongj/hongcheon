@@ -4,7 +4,6 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 
-
 const courses = [
     {
       id: 1,
@@ -52,7 +51,7 @@ export default function SuggestCourse() {
     return (
       <div>
       {courses.map(course => (
-        <div className=''>
+        <div className='' key={course.id}>
             <div className='flex flex-row w-full h-fit'>
               <p className="text-lg mr-auto">{course.recommendedUserName}님이 추천하는 코스에요.</p>
               <div className='flex flex-row items-center'>

@@ -96,7 +96,7 @@ export default function ShowCourse() {
   return (
     <div className='flex flex-col'>
       {articles.slice(0, displayPosts).map(course => (
-        <div className="flex flex-row w-full h-fit mb-8">
+        <div className="flex flex-row w-full h-fit mb-8" key={course.id}>
             <div className="w-fit h-fit">
                 <Image src={course.imageUrl} width={200} height={200} alt={course.name} />
             </div>
