@@ -1,11 +1,14 @@
 import dynamic from 'next/dynamic';
 import React from "react";
 import Loading from './loading';
-import SuggestCourse from '@/app/components/suggestCourse';
 
 const ShowCourse = dynamic(() => import('@/app/components/showCourse'), {
   loading: () => <Loading/>,
-}) 
+})
+
+const SuggestCourse = dynamic(() => import('@/app/components/suggestCourse'), {
+  loading: () => <Loading/>,
+})
 
 let isModalOpen = true;
 

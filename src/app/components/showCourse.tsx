@@ -98,15 +98,20 @@ export default function ShowCourse() {
       {articles.slice(0, displayPosts).map(course => (
         <div className="flex flex-row w-full h-fit mb-8" key={course.id}>
             <div className="w-fit h-fit">
-                <Image src={course.imageUrl} width={200} height={200} alt={course.name} />
+                <Image src={course.imageUrl} width={150} height={150} alt={course.name} />
             </div>
             <div className="flex flex-col ml-4">
-                <p>{course.name}</p>
-                <p>{course.address}</p>
-                <p>{course.isOpen === true ? '영업중' : '영업종료'}</p>
-                <p>{course.openTime}</p>
-                <div className="flex flex-row">
-                    <p>대표번호: </p>
+                <p className='text-base font-semibold'>{course.name}</p>
+                <p className='text-sm text-gray-500'>{course.address}</p>
+                <div className="flex flex-row text-gray-500 items-center">
+                  {course.isOpen === true ?
+                  <p className='text-green-600 font-medium text-sm'>영업중&nbsp;</p> :
+                  <p className='text-red-600 font-medium'>영업종료&nbsp;</p>
+                  }
+                  <p>{course.openTime}</p>
+                </div>
+                <div className="flex flex-row text-gray-500">
+                    <p>대표번호:&nbsp;</p>
                     <p>{course.phoneNumber}</p>
                 </div>
             </div>
