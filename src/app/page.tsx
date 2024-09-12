@@ -1,6 +1,27 @@
 import dynamic from 'next/dynamic';
 import React from "react";
 import Loading from './loading';
+import { getPosts } from './lib/db';
+import { NextApiRequest } from 'next/dist/shared/lib/utils';
+
+
+// API 라우트에서 사용 예시
+export async function handler(req: NextApiRequest, res: any) {
+  const posts = await getPosts();
+  res.status(200).json(posts);
+}
+
+// 서버 컴포넌트에서 사용 예시
+export async function PostList() {
+  const posts = await getPosts();
+  return (
+    <ul>
+      {posts.map(post => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </ul>
+  );
+}
 
 const ShowCourse = dynamic(() => import('@/app/components/showCourse'), {
   loading: () => <Loading/>,
