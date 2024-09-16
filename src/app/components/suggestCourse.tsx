@@ -1,7 +1,7 @@
 'use client'
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 
 const courses = [
@@ -13,7 +13,7 @@ const courses = [
         place1: {imageUrl: '/img1.jpg', coursesName: '비발디파크 오션월드',},
         place2: {imageUrl: '/img2.jpg', coursesName: 'ㅁㄴㅇㄹ',},
         place3: {imageUrl: '/img3.jpg', coursesName: 'ㅇㄹ호ㅠㅍㅍ',},
-        place4: {imageUrl: '/img4.jpg', coursesName: 'ㅁㄴㅇㄹ',},
+        place4: {imageUrl: '/img4.jpg', coursesName: 'ㅁㄴㅇd',},
         place5: {imageUrl: '/img5.jpg', coursesName: 'ㅇㄹ호ㅠㅍㅍ',},
       }
     },
@@ -43,39 +43,98 @@ const courses = [
 
 
 export default function SuggestCourse() {
-  const [isLiked, setIsLiked] = useState(false);
+  const [coursesData, setCoursesData] = useState(courses);
+  const [likedStates, setLikedStates] = useState(courses.map(() => false));
   
-  const handleClick = () => {
-    setIsLiked(!isLiked);
+  useEffect(() => {
+    // 서버에서 코스 데이터를 가져오는 함수
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch('/api/courses');
+        const data = await response.json();
+        setCoursesData(data);
+        setLikedStates(data.map(() => false));
+      } catch (error) {
+        console.error('코스 데이터를 가져오는 데 실패했습니다:', error);
+      }
+    };
+  
+    fetchCourses();
+  }, []);
+
+  const handleLike = async (index:any) => {
+    setLikedStates(prevStates => {
+      const newStates = [...prevStates];
+      newStates[index] = !newStates[index];
+      return newStates;
+    });
+
+    // 서버에 좋아요 상태 업데이트 요청
+    try {
+      const response = await fetch(`/api/courses/${coursesData[index].id}/like`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ liked: !likedStates[index] }),
+      });
+    
+      if (!response.ok) {
+        throw new Error('좋아요 업데이트에 실패했습니다.');
+      }
+    
+      const updatedCourse = await response.json();
+      setCoursesData(prevCourses => {
+        const newCourses = [...prevCourses];
+        newCourses[index] = updatedCourse;
+        return newCourses;
+      });
+    } catch (error) {
+      console.error('좋아요 업데이트 중 오류 발생:', error);
+      // 오류 발생 시 좋아요 상태를 원래대로 되돌림
+      setLikedStates(prevStates => {
+        const newStates = [...prevStates];
+        newStates[index] = !newStates[index];
+        return newStates;
+      });
+    }
   };
-    return (
-      <div>
-      {courses.map(course => (
+
+  return (
+    <div>
+      {coursesData.map((course, index) => (
         <div className='' key={course.id}>
-            <div className='flex flex-row w-full h-fit'>
-              <p className="text-lg mr-auto">{course.recommendedUserName}님이 추천하는 코스에요.</p>
-              <div className='flex flex-row items-center'>
-               추천 수:<p className='text-red-600 font-bold'>{course.likedCount}</p>
-                <button onClick={handleClick} className='ml-2'>
-                  {isLiked ? 'Liked' : 'Like'}
-                </button>
-              </div>
+          <div className='flex flex-row w-full h-fit mb-2 items-center'>
+            <p className="text-lg mr-auto">{course.recommendedUserName}님이 추천하는 코스에요.</p>
+            <div className='flex flex-row items-center'>
+              추천 수:&nbsp;
+              <p className='text-red-600 font-bold'>
+                {likedStates[index] ? course.likedCount + 1 : course.likedCount}
+              </p>
+              <button 
+                onClick={() => handleLike(index)} 
+                className={`ml-2 border-2 rounded-md px-2 py-1 ${
+                  likedStates[index] ? 'bg-red-500 text-white dark:bg-red-500 dark:text-white' : 'border-black dark:border-white'
+                }`}
+              >
+                {likedStates[index] ? 'Liked' : 'Like'}
+              </button>
             </div>
-          <div className="flex flex-row w-full h-fit mb-8">
-          <div className="flex flex-row mb-8 h-fit overflow-x-scroll">
-            {Object.values(course.placese).map((place: { imageUrl: string | StaticImport; coursesName: string }) => (
-              <div key={place.coursesName} className='w-52 h-auto flex flex-col items-center' > 
-                <Image src={place.imageUrl} width={200} height={150} alt={place.coursesName} className='w-40 h-auto'/>
-                <p className='text-sm overflow-clip w-52'>{place.coursesName}</p>
-              </div>
-            ))}
           </div>
-        </div>
+          <div className="flex flex-row w-full h-fit mb-8">
+            <div className="flex flex-row mb-8 h-fit overflow-x-scroll">
+              {Object.values(course.placese).map((place: { imageUrl: string | StaticImport; coursesName: string }) => (
+                <div key={place.coursesName} className='w-52 h-auto flex flex-col items-center'> 
+                  <Image src={place.imageUrl} width={200} height={150} alt={place.coursesName} className='w-40 h-auto'/>
+                  <p className='text-sm overflow-clip w-52'>{place.coursesName}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       ))}
     </div>
-    
-      );
+  );
 }
 
 
