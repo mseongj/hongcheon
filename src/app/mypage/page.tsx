@@ -1,4 +1,6 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import LogoutButton from '@/app/mypage/components/LogoutButton';
 
 export default function MyPage() {
     interface userInformation {
@@ -7,13 +9,21 @@ export default function MyPage() {
         userProgress: number;
         userLevel: string;
     };
-
     const userInformation : userInformation = {
         userName: "홍길동",
         userGrade: "상병",
         userProgress: 34.8,
         userLevel: "primium"
     };
+    
+    const menuItems = [
+        { text: '나의 코스', href: '/mypage/my-courses' },
+        { text: '내 계정 설정', href: '/mypage/account-settings' },
+        { text: '친구 설정', href: '/mypage/friend-settings' },
+        { text: '나의 멤버십 / 요금제 갱신', href: '/mypage/membership' },
+        { text: '계정 연동 확인 / 티머니 연동', href: '/mypage/account-linking' }, // 이 경로는 파일 구조에 없으므로 확인 필요
+        { text: '내가 마음에 들어한 코스', href: '/mypage/liked-courses' }
+    ];
     
     return (
         <div className='flex flex-col items-center'>
@@ -79,6 +89,24 @@ export default function MyPage() {
                         <p className='text-[8px]'>팔로워가<br/>좋아하는<br />내 코스</p>
                     </div>
                 </div>
+            </div>
+            <div className='flex flex-col items-start w-full m-5 h-full justify-between' id='user-settings'>
+                {menuItems.map((item, index) => (
+                    <Link key={index} href={item.href}>
+                    <p className='mb-3 ml-5 cursor-pointer hover:text-blue-500'>
+                        {item.text}
+                    </p>
+                    </Link>
+                ))}
+            </div>
+            <div className='flex flex-col items-start w-full m-5 h-full justify-between' >
+                <Link href="/terms-of-service">
+                    <p className='mb-3 ml-5 cursor-pointer hover:text-blue-500 font-bold'>이용약관</p>
+                </Link>
+                <Link href="/privacy-policy">
+                    <p className='mb-3 ml-5 cursor-pointer hover:text-blue-500 font-bold'>개인정보 처리방침</p>
+                </Link>
+                <LogoutButton />
             </div>
         </div>
     );
