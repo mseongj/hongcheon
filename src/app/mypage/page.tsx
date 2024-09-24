@@ -45,24 +45,31 @@ export default function MyPage() {
             <div className='flex flex-col h-full mx-5 mt-5 md:w-10/12 md:mx-auto lg:w-10/12 sm:w-full w-full justify-center bg-blue-600 rounded-lg text-white p-4' id='user-info-card'>
                 <div className='flex flex-row mb-5'>
                     <p>{`${userInformation.userLevel[0].toUpperCase()}${userInformation.userLevel.slice(1)}`} Level</p>
-                    <p className='ml-3 text-sm text-gray-400 align-text-bottom mt-1'>멤버십 갱신
-                        <span className="inline-block w-2 h-2 border-black dark:border-gray-400 border-r-2 border-b-2 transform rotate-[-45deg] ml-1" />
-                    </p>
+                    <Link href='/mypage/membership'>
+                        <p className='ml-3 text-sm text-gray-400 align-text-bottom mt-1'>멤버십 갱신
+                            <span className="inline-block w-2 h-2 border-black dark:border-gray-400 border-r-2 border-b-2 transform rotate-[-45deg] ml-1" />
+                        </p>
+                    </Link>
                 </div>
                 <div className='flex flex-row'>
                     <p className='text-xl'>나의 리뷰 점수</p>
-                    <p className='ml-3 text-sm text-gray-400 align-text-bottom mt-1'>자세히 보기
-                        <span className="inline-block w-2 h-2 border-black dark:border-gray-400 border-r-2 border-b-2 transform rotate-[-45deg] ml-1" />
-                    </p>
+                    <Link href='/mypage/my-courses'>
+                        <p className='ml-3 text-sm text-gray-400 align-text-bottom mt-1'>자세히 보기
+                            <span className="inline-block w-2 h-2 border-black dark:border-gray-400 border-r-2 border-b-2 transform rotate-[-45deg] ml-1" />
+                        </p>
+                    </Link>
                     <div className='w-7 h-7 bg-green-500 rounded-full ml-3 align-text-bottom pt-1'>
                         <p className='text-xs text-center text-white items-center '>85%</p>
                     </div>
                 </div>
                 <div className='flex flex-row'>
                     <p className='text-xl'>홍천 점수</p>
-                    <p className='ml-3 text-sm text-gray-400 align-text-bottom mt-1'>자세히 보기
-                        <span className="inline-block w-2 h-2 border-black dark:border-gray-400 border-r-2 border-b-2 transform rotate-[-45deg] ml-1" />
-                    </p>
+                    <Link href='/mypage/my-courses'>
+                        <p className='ml-3 text-sm text-gray-400 align-text-bottom mt-1'>자세히 보기
+                            <span className="inline-block w-2 h-2 border-black dark:border-gray-400 border-r-2 border-b-2 transform rotate-[-45deg] ml-1" />
+                        </p>
+                    </Link>
+                        
                     <div className='w-7 h-7 bg-blue-400 rounded-full ml-3 align-text-bottom pt-1'>
                         <p className='text-xs text-center text-white'>75%</p>
                     </div>
@@ -70,23 +77,31 @@ export default function MyPage() {
                 <hr className='bg-white w-full h-[1px] border-none mt-5'/>
                 <div className='flex flex-row justify-evenly items-center text-center'>
                     <div className='w-15 ml-3'>
-                        <EmailIcon color1='white' color2='white' />
-                        <p className='text-[8px]'>내 메시지 함</p>
+                        <Link href="mypage/message">
+                            <EmailIcon color1='white' color2='white' />
+                            <p className='text-[8px]'>내 메시지 함</p>
+                        </Link>
                     </div>
                     <div className='w-[1px] h-[100px] bg-white mr-5'/>
                     <div className='w-15 mr-3'>
-                        <MegaphoneIcon />
-                        <p className='text-[8px]'>공지사항</p>
+                        <Link href="mypage/announcement">
+                            <MegaphoneIcon />
+                            <p className='text-[8px]'>공지사항</p>
+                        </Link>
                     </div>
                     <div className='w-[1px] h-[100px] bg-white mr-5' />
                     <div className='w-15 mr-3'>
-                        <FlagIcon color='#68005b'/>
-                        <p className='text-[8px]'>나의 코스</p>
+                        <Link href="/mypage/my-courses">
+                            <FlagIcon color='#68005b'/>
+                            <p className='text-[8px]'>나의 코스</p>
+                        </Link>
                     </div>
                     <div className='w-[1px] h-[100px] bg-white mr-5' />
                     <div className='w-15 mr-3'>
-                        <HearIcon color='red'/>
-                        <p className='text-[8px]'>팔로워가<br/>좋아하는<br />내 코스</p>
+                        <Link href="mypage/liked-courses">
+                            <HearIcon color='red'/>
+                            <p className='text-[8px]'>팔로워가<br/>좋아하는<br />내 코스</p>
+                        </Link>
                     </div>
                 </div>
             </div>
