@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic';
 import React from "react";
+import BottomBar from "@/app/components/BottomBar";
 import Loading from './loading';
 
 const ShowCourse = dynamic(() => import('@/app/components/showCourse'), {
@@ -22,6 +23,7 @@ export default function Home() {
       <div id='추천 코스' className='w-full mt-10'>
         {isModalOpen && <SuggestCourse/> || <Loading/>}
       </div>
+      <BottomBar />
     </div>
   );
 }

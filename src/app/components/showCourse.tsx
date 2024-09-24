@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const initialPostList = 2; // 초기에 보여 줄 게시물 개수
 const incrementInitialPostList = 4; // "load more"버튼을 누를 때 마다 추가 될 게시물 개수
@@ -96,26 +97,28 @@ export default function ShowCourse() {
   return (
     <div className='flex flex-col'>
       {articles.slice(0, displayPosts).map(course => (
-        <div className="flex flex-row w-full h-fit mb-8" key={course.id}>
-              <div className="w-fit h-fit">
-                  <Image src={course.imageUrl} width={150} height={150} alt={course.name} />
+        <Link href={`/courses/${course.id}`}>
+          <div className="flex flex-row w-full h-fit mb-8" key={course.id}>
+                <div className="w-fit h-fit">
+                    <Image src={course.imageUrl} width={150} height={150} alt={course.name} />
+                </div>
+                <div className="flex flex-col ml-4">
+                    <p className='text-base font-semibold'>{course.name}</p>
+                    <p className='text-sm text-gray-500'>{course.address}</p>
+                    <div className="flex flex-row text-gray-500 items-center">
+                      {course.isOpen === true ?
+                      <p className='text-green-600 font-medium text-sm'>영업중&nbsp;</p> :
+                      <p className='text-red-600 font-medium'>영업종료&nbsp;</p>
+                      }
+                      <p>{course.openTime}</p>
+                    </div>
+                    <div className="flex flex-row text-gray-500">
+                        <p>대표번호:&nbsp;</p>
+                        <p>{course.phoneNumber}</p>
+                    </div>
               </div>
-              <div className="flex flex-col ml-4">
-                  <p className='text-base font-semibold'>{course.name}</p>
-                  <p className='text-sm text-gray-500'>{course.address}</p>
-                  <div className="flex flex-row text-gray-500 items-center">
-                    {course.isOpen === true ?
-                    <p className='text-green-600 font-medium text-sm'>영업중&nbsp;</p> :
-                    <p className='text-red-600 font-medium'>영업종료&nbsp;</p>
-                    }
-                    <p>{course.openTime}</p>
-                  </div>
-                  <div className="flex flex-row text-gray-500">
-                      <p>대표번호:&nbsp;</p>
-                      <p>{course.phoneNumber}</p>
-                  </div>
-            </div>
-        </div>
+          </div>
+          </Link>
       ))}
       {displayPosts < articles.length ? ( 
           <div className="flex flex-col items-center justify-center w-full h-12 cursor-pointer" onClick={loadMore}>
