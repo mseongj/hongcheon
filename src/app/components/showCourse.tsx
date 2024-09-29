@@ -10,12 +10,12 @@ const incrementInitialPostList = 4; // "load more"버튼을 누를 때 마다 �
 const courses = [
     {
       id: 1,
-      name: '비발디파크 오션월드',
-      address: '강원특별자치도 홍천군 서면 한치골길 262 (우)25102',
-      isOpen: true,
-      imageUrl: '/img2.jpg',
-      openTime: '매일 10:00 ~ 17:30',
-      phoneNumber: '1588-4888',
+      name: '고양산 아람마을 <제7회 홍천 개구리축제>',
+      address: '강원 홍천군 서석면 아미산길 54',
+      isOpen: false,
+      imageUrl: '/coursesImages/page1.cover.png',
+      openTime: '평일 09:00 ~ 18:00',
+      phoneNumber: '0507-1433-8930',
     },
     {
       id: 2,

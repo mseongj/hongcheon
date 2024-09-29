@@ -1,6 +1,7 @@
 'use client'
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 
 
@@ -10,12 +11,12 @@ const courses = [
       recommendedUserName: '김홍천',
       likedCount: 230,
       placese:{
-        place1: {imageUrl: '/img1.jpg', coursesName: '비발디파크 오션월드',},
+        place1: {imageUrl: '/coursesImages/page1.cover.png', coursesName: '개구리 축제',},
         place2: {imageUrl: '/img2.jpg', coursesName: 'ㅁㄴㅇㄹ',},
         place3: {imageUrl: '/img3.jpg', coursesName: 'ㅇㄹ호ㅠㅍㅍ',},
         place4: {imageUrl: '/img4.jpg', coursesName: 'ㅁㄴㅇd',},
         place5: {imageUrl: '/img5.jpg', coursesName: 'ㅇㄹ호ㅠㅍㅍ',},
-      }
+      },
     },
     {
       id: 2,
@@ -103,6 +104,7 @@ export default function SuggestCourse() {
   return (
     <div>
       {coursesData.map((course, index) => (
+        <Link href={`/suggestCourses/${course.id}`} key={course.id}>
         <div className='' key={course.id}>
           <div className='flex flex-row w-full h-fit mb-2 items-center'>
             <p className="text-lg mr-auto">{course.recommendedUserName}님이 추천하는 코스에요.</p>
@@ -125,13 +127,14 @@ export default function SuggestCourse() {
             <div className="flex flex-row mb-8 h-fit overflow-x-scroll">
               {Object.values(course.placese).map((place: { imageUrl: string | StaticImport; coursesName: string }) => (
                 <div key={place.coursesName} className='w-52 h-auto flex flex-col items-center'> 
-                  <Image src={place.imageUrl} width={200} height={150} alt={place.coursesName} className='w-40 h-auto'/>
+                  <Image src={place.imageUrl} width={200} height={150} alt={place.coursesName} className='w-40 h-32 overflow-hidden object-cover rounded-md'/>
                   <p className='text-sm overflow-clip w-52'>{place.coursesName}</p>
                 </div>
               ))}
             </div>
           </div>
         </div>
+        </Link>
       ))}
     </div>
   );

@@ -10,7 +10,7 @@ export default function Courses({params}: Props) {
   const courese: {[key: string]: React.ReactNode} = {
     '1': 
     (<div className='w-full h-full text-center text-lg'>
-      <Image src={'/1.png'} className='w-full' width={300} height={300} alt={'홍천 개구리축제'}></Image>
+      <Image src={'/coursesImages/page1.img.main.png'} className='w-full mx-auto mb-2' width={300} height={300} alt={'홍천 개구리축제'}></Image>
       <p className='text-2xl font-bold text-[#3893d6]'>제7회 홍천 개구리축제</p>
       <br  />
       <h1>자연과 사람이 함께 어우러지는 홍천 <span className='text-[#3893d6]'>개구리축제</span></h1>
@@ -29,14 +29,10 @@ export default function Courses({params}: Props) {
       <p>여러 가지 체험 프로그램과</p>
       <p>맛있는 먹거리 😋 즐기러 와주세요~</p>
       <Image src={'/coursesImages/page1.img1.png'} className='text-center w-40 mt-10 mx-auto mb-2' width={300} height={300} alt={'홍천 개구리축제'}></Image>
-      <p className='text-xl'>
-        <p><span className='font-bold bg-[#5d90bd] dark:bg-[rgb(93,144,189)]'>2024년 9월 28일(토) 10:00~21:00</span></p>
-        🐸 플로깅 행사 14:00~16:00
-        <br  />
-        🐸 개막식 16:30~17:30
-        <br  />
-        🐸 아람마을 노래자랑 19:00~21:00
-      </p>
+        <p className='text-xl'><span className='font-bold bg-[#5d90bd] dark:bg-[rgb(93,144,189)]'>2024년 9월 28일(토) 10:00~21:00</span></p>
+        <p className='text-xl'>🐸 플로깅 행사 14:00~16:00</p>
+        <p className='text-xl'>🐸 개막식 16:30~17:30</p>
+        <p className='text-xl'>🐸 아람마을 노래자랑 19:00~21:00</p>
       <Image src={'/coursesImages/page1.img2.png'} className='text-center w-40 mt-10 mx-auto mb-2' width={300} height={300} alt={'홍천 개구리축제'}></Image>
       <p className='font-bold text-xl'>강원 홍천군 서석면 아미산길 54</p>
       <p>고양산 아람마을 일대</p>
@@ -44,7 +40,10 @@ export default function Courses({params}: Props) {
       <p className='font-bold text-[#3893d6] text-2xl'>0507-1433-8930</p>
       <p className='text-red-500 text-sm'>※ 평일 오전 10시~오후 5시</p>
       <p className='text-red-500 text-sm'>(주말, 공휴일 실시간 안내 불가)</p>
-      
+      <div className='flex h-12 mt-10 mb-2 justify-center items-center rounded-md mx-auto bg-green-600 hover:bg-yellow-300 transition-colors duration-300 cursor-pointer'>
+        <Image src={'/arrow-right-circle.svg'} className='w-6 h-6 mr-2' width={20} height={20} alt={'홍천 개구리축제'}></Image>
+        <a className='text-white text-lg font-bold' href="https://booking.naver.com/booking/12/bizes/716348/items/5560195">예약하기</a>
+      </div>
     </div>),
       '2': 
       (<div>
@@ -70,7 +69,6 @@ export default function Courses({params}: Props) {
 
   return (
     <>
-    <div>{params.id}포스트</div>
     {courese[params.id]}
     </>
   )
