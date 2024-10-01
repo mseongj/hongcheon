@@ -34,7 +34,7 @@ export default function FirstCourse(){
   useEffect(() => {
       const kakaoMapScript = document.createElement('script');
       kakaoMapScript.async = true;
-      kakaoMapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_kakaoMapApiKey}&autoload=false&libraries=services`;
+      kakaoMapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.kakaoMapApiKey}&autoload=false&libraries=services`;
 
       document.head.appendChild(kakaoMapScript);
 
