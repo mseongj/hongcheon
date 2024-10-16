@@ -19,10 +19,10 @@ const courses = [
     },
     {
       id: 2,
-      name: 'asdf',
+      name: '도관2리 꽃차마을 숲속정원 축제 <치유의 숲>',
       address: '강원특별자치도 홍천군 서면 한치골길 262 (우)25102',
       isOpen: true,
-      imageUrl: '/img3.jpg',
+      imageUrl: "/page2.cover.png",
       openTime: '매일 10:00 ~ 17:30',
       phoneNumber: '1588-4888',
     },

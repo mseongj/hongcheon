@@ -10,7 +10,7 @@ declare global {
     kakao: any;
   }
 }
-export default function FirstCourse(){
+export default function ShowNearbyPlaces(){
     type Place = {
         place_name: string;
         distance: string;
@@ -28,7 +28,7 @@ export default function FirstCourse(){
       
       const mapRef = useRef<HTMLDivElement>(null);
       const [selectedPlace, setSelectedPlace] = useState<Place | null>(null);
-      const [keyword, setKeyword] = useState<string>("막국수");
+      const [keyword, setKeyword] = useState<string>("홍천 버스 터미널");
       const [map, setMap] = useState<any>(null);
       
       useEffect(() => {
@@ -79,7 +79,6 @@ export default function FirstCourse(){
                 setSelectedPlace(place);
               });
             };
-      
             searchPlaces();
           });
         };
@@ -95,13 +94,14 @@ export default function FirstCourse(){
 
   return (
       <div>
-        <div>
-          <Image src={"/suggestCourses/page1.img1.png"} width={1000} height={500} alt={"홍천 개구리 축제 플로깅 챌린지"} />
-          <Image src={"/suggestCourses/page1.img2.png"} width={1000} height={300} alt={"플로깅 챌린지 리워드"}/>
-          <br />
-          <p>홍천 개구리 축제 플로깅 챌린지</p>
-        </div>
-          <div ref={mapRef} style={{ width: '100%', height: '400px' }}></div>
+          <input 
+              type="text" 
+              value={keyword} 
+              onChange={(e) => setKeyword(e.target.value)} 
+              className='w-full h-12 text-slate-950 pl-5 focus:bg-slate-100 border-none'
+              placeholder="검색어를 입력하세요"
+          />
+          <div ref={mapRef} style={{ width: '100%', height: '82vh' }}></div>
           {selectedPlace && (
               <div className='mt-3 h-max flex flex-col items-center justify-center gap-2 w-full text-center bg-white rounded-t-lg shadow-lg text-black'>
                   <p>{selectedPlace.place_name}</p>
@@ -110,13 +110,7 @@ export default function FirstCourse(){
                   <Link href={selectedPlace.place_url} target="_blank" className='mb-2 mx-auto p-3 h-14 text-white rounded-lg bg-green-600'>지도 바로가기</Link>
               </div>
           )}
-          <input 
-              type="text" 
-              value={keyword} 
-              onChange={(e) => setKeyword(e.target.value)} 
-              className='w-full h-12 mb-10 text-slate-950 pl-5 focus:bg-slate-300'
-              placeholder="검색어를 입력하세요"
-          />
+          
           
       </div>
   );

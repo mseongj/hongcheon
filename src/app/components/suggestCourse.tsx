@@ -11,16 +11,16 @@ const courses = [
       recommendedUserName: '김홍천',
       likedCount: 230,
       placese:{
-        place1: {imageUrl: '/coursesImages/page1.cover.png', coursesName: '개구리 축제',},
-        place2: {imageUrl: '/img2.jpg', coursesName: 'ㅁㄴㅇㄹ',},
-        place3: {imageUrl: '/img3.jpg', coursesName: 'ㅇㄹ호ㅠㅍㅍ',},
+        place1: {imageUrl: "/coursesImages/page1.cover.png", coursesName: '개구리 축제',},
+        place2: {imageUrl: "/page2.cover.png", coursesName: '숲속 정원 축제',},
+        place3: {imageUrl: '/page3.cover.png', coursesName: '할로윈 축제',},
         place4: {imageUrl: '/img4.jpg', coursesName: 'ㅁㄴㅇd',},
         place5: {imageUrl: '/img5.jpg', coursesName: 'ㅇㄹ호ㅠㅍㅍ',},
       },
     },
     {
       id: 2,
-      recommendedUserName: '박홍철',
+      recommendedUserName: '민강현',
       likedCount: 180,
       placese:{
         place1: {imageUrl: '/img3.jpg', coursesName: 'asdf',},
