@@ -101,9 +101,9 @@ export default function ShowNearbyPlaces(){
               className='w-full h-12 text-slate-950 pl-5 focus:bg-slate-100 border-none'
               placeholder="검색어를 입력하세요"
           />
-          <div ref={mapRef} style={{ width: '100%', height: '82vh' }}></div>
+          <div ref={mapRef} style={{ width: '100%', height: '72vh' }}></div>
           {selectedPlace && (
-              <div className='mt-3 h-max flex flex-col items-center justify-center gap-2 w-full text-center bg-white rounded-t-lg shadow-lg text-black'>
+              <div className='mt-3 h-max flex flex-col items-center justify-center gap-2 w-full text-center bg-white rounded-t-lg shadow-lg text-black mb-20'>
                   <p>{selectedPlace.place_name}</p>
                   <p>{selectedPlace.address_name}</p>
                   <p>{selectedPlace.phone}</p>
