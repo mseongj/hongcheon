@@ -98,10 +98,10 @@ export default function ShowNearbyPlaces(){
               type="text" 
               value={keyword} 
               onChange={(e) => setKeyword(e.target.value)} 
-              className='w-full h-12 text-slate-950 pl-5 focus:bg-slate-100 border-none'
+              className='w-full h-12 text-slate-950 pl-5 focus:bg-slate-100 border-none mb-1 rounded'
               placeholder="검색어를 입력하세요"
           />
-          <div ref={mapRef} style={{ width: '100%', height: '72vh' }}></div>
+          <div ref={mapRef} style={{ width: '100%', height: '70vh', borderRadius: '10px' }}></div>
           {selectedPlace && (
               <div className='mt-3 h-max flex flex-col items-center justify-center gap-2 w-full text-center bg-white rounded-t-lg shadow-lg text-black mb-20'>
                   <p>{selectedPlace.place_name}</p>
