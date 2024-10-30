@@ -9,6 +9,7 @@
     pkgs.yarn
     pkgs.nodePackages.pnpm
     pkgs.bun
+    pkgs.jdk17
   ];
   # Sets environment variables in the workspace
   env = {};
@@ -16,6 +17,16 @@
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
       # "vscodevim.vim"
+      "redhat.java"
+      "vscjava.vscode-java-debug"
+      "vscjava.vscode-java-dependency"
+      "vscjava.vscode-java-pack"
+      "vscjava.vscode-java-test"
+      "vscjava.vscode-maven"
+      "Pivotal.vscode-boot-dev-pack"
+      "vmware.vscode-spring-boot"
+      "vscjava.vscode-spring-boot-dashboard"
+      "vscjava.vscode-spring-initializr"
     ];
     workspace = {
       # Runs when a workspace is first created with this `dev.nix` file
@@ -37,7 +48,7 @@
       enable = true;
       previews = {
         web = {
-          command = ["npm" "run" "dev" "--" "--port" "$PORT" "--hostname" "0.0.0.0"];
+          command = ["./gradlew" ":bootRun" "--args='--server.port=$PORT'" "npm" "run" "dev" "--" "--port" "$PORT" "--hostname" "0.0.0.0"];
           manager = "web";
         };
       };
