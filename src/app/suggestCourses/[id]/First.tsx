@@ -63,6 +63,8 @@ export default function FirstCourse(){
             const placesSearchCB = (data: Place[], status: any) => {
               if (status === window.kakao.maps.services.Status.OK) {
                 data.forEach(place => displayMarker(place));
+              } else if( status == null || status == "ZERO_RESULT" ) {
+                console.error('찾는 곳이 없습니다:', status);
               } else {
                 console.error('Search failed:', status);
               }
@@ -92,7 +94,7 @@ export default function FirstCourse(){
         };
       }, [keyword]);
       
-
+// 홍천 서석면 풍암리 715
   return (
       <div>
         <div>
@@ -102,22 +104,21 @@ export default function FirstCourse(){
           <p>홍천 개구리 축제 플로깅 챌린지</p>
         </div>
           <div ref={mapRef} style={{ width: '100%', height: '400px' }}></div>
+          <input 
+              type="text" 
+              value={keyword} 
+              onChange={(e) => setKeyword(e.target.value)} 
+              className='w-full h-12 text-slate-950 pl-5 focus:bg-slate-300 rounded-t-lg mt-2'
+              placeholder="검색어를 입력하세요"
+          />
           {selectedPlace && (
-              <div className='mt-3 h-max flex flex-col items-center justify-center gap-2 w-full text-center bg-white rounded-t-lg shadow-lg text-black'>
+              <div className='h-max flex flex-col items-center justify-center gap-2 w-full text-center bg-white shadow-lg text-black'>
                   <p>{selectedPlace.place_name}</p>
                   <p>{selectedPlace.address_name}</p>
                   <p>{selectedPlace.phone}</p>
                   <Link href={selectedPlace.place_url} target="_blank" className='mb-2 mx-auto p-3 h-14 text-white rounded-lg bg-green-600'>지도 바로가기</Link>
               </div>
-          )}
-          <input 
-              type="text" 
-              value={keyword} 
-              onChange={(e) => setKeyword(e.target.value)} 
-              className='w-full h-12 mb-10 text-slate-950 pl-5 focus:bg-slate-300'
-              placeholder="검색어를 입력하세요"
-          />
-          
+          )}          
       </div>
   );
 }
