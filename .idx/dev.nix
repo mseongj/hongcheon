@@ -48,7 +48,8 @@
       enable = true;
       previews = {
         web = {
-          command = ["./gradlew" ":bootRun" "--args='--server.port=$PORT'" "npm" "run" "dev" "--" "--port" "$PORT" "--hostname" "0.0.0.0"];
+          command = ["npm" "run" "dev" "--" "--port" "$PORT" "--hostname" "0.0.0.0"];
+          # command = ["./gradlew" ":bootRun" "--args='--server.port=$PORT'" "npm" "run" "dev" "--" "--port" "$PORT" "--hostname" "0.0.0.0"];
           manager = "web";
         };
       };
