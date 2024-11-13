@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const initialPostList = 4; // 초기에 보여 줄 게시물 개수
-const incrementInitialPostList = 4; // "load more"버튼을 누를 때 마다 추가 될 게시물 개수
+const incrementInitialPostList = 1; // "load more"버튼을 누를 때 마다 추가 될 게시물 개수
 
 const courses = [
     {
@@ -28,12 +28,12 @@ const courses = [
     },
     {
       id: 3,
-      name: 'asdf',
-      address: '강원특별자치도 홍천군 서면 한치골길 262 (우)25102',
-      isOpen: true,
-      imageUrl: '/test.png',
-      openTime: '매일 10:00 ~ 17:30',
-      phoneNumber: '1588-4888',
+      name: '고양산 아람마을 <제7회 홍천 개구리축제>',
+      address: '강원 홍천군 서석면 아미산길 54',
+      isOpen: false,
+      imageUrl: '/coursesImages/page1.cover.png',
+      openTime: '평일 09:00 ~ 18:00',
+      phoneNumber: '0507-1433-8930',
     },
     {
       id: 4,
@@ -46,39 +46,12 @@ const courses = [
     },
     {
       id: 5,
-      name: '비발디파크 오션월드',
-      address: '강원특별자치도 홍천군 서면 한치골길 262 (우)25102',
-      isOpen: true,
-      imageUrl: '/test.png',
-      openTime: '매일 10:00 ~ 17:30',
-      phoneNumber: '1588-4888',
-    },
-    {
-      id: 6,
-      name: 'asdf',
-      address: '강원특별자치도 홍천군 서면 한치골길 262 (우)25102',
-      isOpen: true,
-      imageUrl: '/test.png',
-      openTime: '매일 10:00 ~ 17:30',
-      phoneNumber: '1588-4888',
-    },
-    {
-      id: 7,
-      name: 'asdf',
-      address: '강원특별자치도 홍천군 서면 한치골길 262 (우)25102',
-      isOpen: true,
-      imageUrl: '/test.png',
-      openTime: '매일 10:00 ~ 17:30',
-      phoneNumber: '1588-4888',
-    },
-    {
-      id: 8,
-      name: 'asdf',
-      address: '강원특별자치도 홍천군 서면 한치골길 262 (우)25102',
-      isOpen: true,
-      imageUrl: '/test.png',
-      openTime: '매일 10:00 ~ 17:30',
-      phoneNumber: '1588-4888',
+      name: '코스가 준비중이에요!',
+      isOpen: null,
+      address: '',
+      imageUrl: '',
+      openTime: '',
+      phoneNumber: '',
     },
 ]
 
@@ -106,7 +79,7 @@ export default function ShowCourse() {
                     <p className='text-base font-semibold'>{course.name}</p>
                     <p className='text-sm text-gray-500'>{course.address}</p>
                     <div className="flex flex-row text-gray-500 items-center">
-                      {course.isOpen === true ?
+                      {course.isOpen === null ? <p>좋은 코스로 다시 만나요~!</p> : course.isOpen === true ?
                       <p className='text-green-600 font-medium text-sm'>영업중&nbsp;</p> :
                       <p className='text-red-600 font-medium'>영업종료&nbsp;</p>
                       }

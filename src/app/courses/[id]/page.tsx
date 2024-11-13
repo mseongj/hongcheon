@@ -9,6 +9,29 @@ type Props = {
 export default function Courses({params}: Props) {
   const courese: {[key: string]: React.ReactNode} = {
     '1': 
+      (<div className='w-full h-full text-center text-lg'>
+        <div className='bg-[#fff7eb]'>
+          <Image src={'/coursesImages/page3.img1.png'} className='' width={300} height={300} alt={'쑥떡쑥떡 축제'}></Image>
+          <h1 className='font-bold text-[#198852] text-3xl '>제1회 태극마을 쑥떡쑥떡 축제</h1>
+          <p>곰이 쑥을 먹고 사람이 되었다는 단군신화 이야기!</p>
+          <p>그 쑥이 어디서 왔을지 상상해본 적 있나요?</p>
+          <br  />
+          <p>홍천강 줄기가 태극모양으로 흐르는 태극마을은</p>
+          <p>강인한 생명력과 조화를 상징하는 마을입니다.</p>
+          <br  />
+          <p>태극마을에서 자란 쑥은 신화 속 기운을 그대로 품고 있어,</p>
+          <p>마을 사람들은 쑥을 통해 건강과 평화를 얻는다고 믿어왔어요.</p>
+          <br  />
+          <p>자연과 전설이 만나는 신비로운 태극마을의 쑥을</p>
+          <p>제1회 태극마을 쑥떡쑥떡 축제에서 만나보세요!</p>
+          <br  />
+          <p>쑥쑥커피와 쑥쑥크림라떼 한 잔에 담긴 신비로운 맛과 향,</p>
+          <p>쑥을 활용한 다양한 체험이 여러분을 기다리고 있습니다.</p>
+          <Image src={'/coursesImages/page3.img2.png'} className='' width={300} height={300} alt={''}></Image>
+        </div>
+        &apos;
+      </div>),
+    '2': 
     (<div className='w-full h-full text-center text-lg'>
       <Image src={'/coursesImages/page1.img.main.png'} className='w-full mx-auto mb-2' width={300} height={300} alt={'홍천 개구리축제'}></Image>
       <p className='text-2xl font-bold text-[#3893d6]'>제7회 홍천 개구리축제</p>
@@ -40,12 +63,8 @@ export default function Courses({params}: Props) {
       <p className='font-bold text-[#3893d6] text-2xl'>0507-1433-8930</p>
       <p className='text-red-500 text-sm'>※ 평일 오전 10시~오후 5시</p>
       <p className='text-red-500 text-sm'>(주말, 공휴일 실시간 안내 불가)</p>
-      <div className='flex h-12 mt-10 mb-2 justify-center items-center rounded-md mx-auto bg-green-600 hover:bg-yellow-300 transition-colors duration-300 cursor-pointer'>
-        <Image src={'/arrow-right-circle.svg'} className='w-6 h-6 mr-2' width={20} height={20} alt={'홍천 개구리축제'}></Image>
-        <a className='text-white text-lg font-bold' href="https://booking.naver.com/booking/12/bizes/716348/items/5560195">예약하기</a>
-      </div>
     </div>),
-      '2': 
+      '3': 
       (<div>
         <Image src={'/1.png'} className='' width={300} height={300} alt={'홍천 개구리축제'}></Image>
         <p>제7회 홍천 개구리축제</p>

@@ -18,28 +18,6 @@ const courses = [
         place5: {imageUrl: '/img5.jpg', coursesName: 'ㅇㄹ호ㅠㅍㅍ',},
       },
     },
-    {
-      id: 2,
-      recommendedUserName: '민강현',
-      likedCount: 180,
-      placese:{
-        place1: {imageUrl: '/img3.jpg', coursesName: 'asdf',},
-        place2: {imageUrl: '/img2.jpg', coursesName: 'ㅁㄴㅇㄹf',},
-        place3: {imageUrl: '/img5.jpg', coursesName: 'a호픁',},
-        place4: {imageUrl: '/img1.jpg', coursesName: '핫플',}
-      }
-    },
-    {
-      id: 3,
-      recommendedUserName: '홍길동',
-      likedCount: 30,
-      placese:{
-        place1: {imageUrl: '/img1.jpg', coursesName: 'asdf',},
-        place2: {imageUrl: '/img5.jpg', coursesName: 'ㅁㄴㅇㄹf',},
-        place3: {imageUrl: '/img2.jpg', coursesName: 'a호픁',},
-        place4: {imageUrl: '/img4.jpg', coursesName: '핫플',}
-      }
-    },
 ];
 
 
@@ -47,21 +25,21 @@ export default function SuggestCourse() {
   const [coursesData, setCoursesData] = useState(courses);
   const [likedStates, setLikedStates] = useState(courses.map(() => false));
   
-  useEffect(() => {
-    // 서버에서 코스 데이터를 가져오는 함수
-    const fetchCourses = async () => {
-      try {
-        const response = await fetch('/api/courses');
-        const data = await response.json();
-        setCoursesData(data);
-        setLikedStates(data.map(() => false));
-      } catch (error) {
-        console.error('코스 데이터를 가져오는 데 실패했습니다:', error);
-      }
-    };
+  // useEffect(() => {
+  //   // 서버에서 코스 데이터를 가져오는 함수
+  //   const fetchCourses = async () => {
+  //     try {
+  //       const response = await fetch('/api/courses');
+  //       const data = await response.json();
+  //       setCoursesData(data);
+  //       setLikedStates(data.map(() => false));
+  //     } catch (error) {
+  //       console.error('코스 데이터를 가져오는 데 실패했습니다:', error);
+  //     }
+  //   };
   
-    fetchCourses();
-  }, []);
+  //   fetchCourses();
+  // }, []);
 
   const handleLike = async (index:any) => {
     setLikedStates(prevStates => {
